@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8687A059-F35B-481B-94DB-4732B070A814}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{66EF5BB3-84AB-4466-9EEB-811DFE07D7D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapVideo.Auth.Api", "src\Auth\FiapVideo.Auth.Api\FiapVideo.Auth.Api.csproj", "{6CD5AAE8-68AB-47BC-ADF7-C68E88D44C9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapVideo.Auth.Application", "src\Auth\FiapVideo.Auth.Application\FiapVideo.Auth.Application.csproj", "{5195BB10-69C4-42D3-8051-7F5C5CEBFEAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapVideo.Auth.Domain", "src\Auth\FiapVideo.Auth.Domain\FiapVideo.Auth.Domain.csproj", "{6AEABC24-E4B7-44DD-AD0D-5C00AD361AA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapVideo.Auth.Infrastructure", "src\Auth\FiapVideo.Auth.Infrastructure\FiapVideo.Auth.Infrastructure.csproj", "{43FE2223-FDEE-44A2-9121-B48B28E79462}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CD5AAE8-68AB-47BC-ADF7-C68E88D44C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CD5AAE8-68AB-47BC-ADF7-C68E88D44C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CD5AAE8-68AB-47BC-ADF7-C68E88D44C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CD5AAE8-68AB-47BC-ADF7-C68E88D44C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5195BB10-69C4-42D3-8051-7F5C5CEBFEAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5195BB10-69C4-42D3-8051-7F5C5CEBFEAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5195BB10-69C4-42D3-8051-7F5C5CEBFEAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5195BB10-69C4-42D3-8051-7F5C5CEBFEAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AEABC24-E4B7-44DD-AD0D-5C00AD361AA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AEABC24-E4B7-44DD-AD0D-5C00AD361AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AEABC24-E4B7-44DD-AD0D-5C00AD361AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AEABC24-E4B7-44DD-AD0D-5C00AD361AA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43FE2223-FDEE-44A2-9121-B48B28E79462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43FE2223-FDEE-44A2-9121-B48B28E79462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43FE2223-FDEE-44A2-9121-B48B28E79462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43FE2223-FDEE-44A2-9121-B48B28E79462}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{66EF5BB3-84AB-4466-9EEB-811DFE07D7D6} = {8687A059-F35B-481B-94DB-4732B070A814}
+		{6CD5AAE8-68AB-47BC-ADF7-C68E88D44C9E} = {66EF5BB3-84AB-4466-9EEB-811DFE07D7D6}
+		{5195BB10-69C4-42D3-8051-7F5C5CEBFEAB} = {66EF5BB3-84AB-4466-9EEB-811DFE07D7D6}
+		{6AEABC24-E4B7-44DD-AD0D-5C00AD361AA4} = {66EF5BB3-84AB-4466-9EEB-811DFE07D7D6}
+		{43FE2223-FDEE-44A2-9121-B48B28E79462} = {66EF5BB3-84AB-4466-9EEB-811DFE07D7D6}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+@FiapVideo.Auth.Api_HostAddress = http://localhost:5068
+
+GET {{FiapVideo.Auth.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
