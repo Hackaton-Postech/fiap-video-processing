@@ -29,5 +29,51 @@ services:
     ports:
       - "5001:8080"
 
+  postgres-videos:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${VIDEOS_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - videos-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  rabbitmq:
+    image: rabbitmq:4-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  storage:
+    image: chrislusf/seaweedfs:latest
+    command: mini -dir=/data
+    environment:
+      AWS_ACCESS_KEY_ID: ${STORAGE_ACCESS_KEY}
+      AWS_SECRET_ACCESS_KEY: ${STORAGE_SECRET_KEY}
+      S3_BUCKET: ${STORAGE_BUCKET}
+    volumes:
+      - storage-data:/data
+    ports:
+      - "8333:8333"
+      - "23646:23646"
+
 volumes:
   auth-db-data:
+  videos-db-data:
+  rabbitmq-data:
+  storage-data:
