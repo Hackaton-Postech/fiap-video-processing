@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Text;
 using FiapVideo.Auth.Application;
@@ -62,6 +63,12 @@ app.Use(async (ctx, next) =>
         await ctx.Response.WriteAsJsonAsync(new { code, message = ex.Message });
     }
 });
+
+if (app.Configuration.GetValue<bool>("Database:MigrateOnStartup"))
+{
+    using var scope = app.Services.CreateScope();
+    scope.ServiceProvider.GetRequiredService<AuthDbContext>().Database.Migrate();
+}
 
 app.UseSwagger();
 app.UseSwaggerUI();
