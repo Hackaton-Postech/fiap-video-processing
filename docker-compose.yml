@@ -97,6 +97,25 @@ services:
     ports:
       - "5002:8080"
 
+  worker:
+    build:
+      context: .
+      dockerfile: src/Worker/Dockerfile
+    environment:
+      Storage__ServiceUrl: http://storage:8333
+      Storage__AccessKey: ${STORAGE_ACCESS_KEY}
+      Storage__SecretKey: ${STORAGE_SECRET_KEY}
+      Storage__Bucket: ${STORAGE_BUCKET}
+      RabbitMq__Host: rabbitmq
+      RabbitMq__User: ${RABBITMQ_USER}
+      RabbitMq__Password: ${RABBITMQ_PASSWORD}
+      Processing__Concurrency: "2"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      storage:
+        condition: service_started
+
 volumes:
   auth-db-data:
   videos-db-data:

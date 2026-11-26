@@ -116,6 +116,7 @@ public class OutboxPublisher(
             ct);
 
         await _channel.ExchangeDeclareAsync(options.Exchange, ExchangeType.Topic, durable: true, cancellationToken: ct);
+        await RabbitTopology.DeclararFilasAsync(_channel, options.Exchange, ct);
         return _channel;
     }
 
