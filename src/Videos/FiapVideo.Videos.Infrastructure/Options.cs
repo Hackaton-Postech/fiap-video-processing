@@ -21,4 +21,7 @@ public class RabbitMqOptions
 public static class RoutingKeys
 {
     public const string VideoEnviado = "video.enviado";
+    public const string VideoProcessando = "video.processando";
+    public const string VideoProcessado = "video.processado";
+    public const string VideoFalhou = "video.falhou";
 }

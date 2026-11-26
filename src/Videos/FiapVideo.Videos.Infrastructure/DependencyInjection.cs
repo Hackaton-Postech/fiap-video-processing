@@ -39,6 +39,7 @@ public static class DependencyInjection
         services.AddSingleton<IVideoStorage, S3VideoStorage>();
 
         services.AddHostedService<OutboxPublisher>();
+        services.AddHostedService<VideoStatusConsumer>();
         services.AddScoped<VideoService>();
         return services;
     }
