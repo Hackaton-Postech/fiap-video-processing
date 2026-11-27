@@ -428,3 +428,6 @@ FodyWeavers.xsd
 saida-*.txt
 
 .env
+coverage-raw/
+coverage-report/
+TestResults/
