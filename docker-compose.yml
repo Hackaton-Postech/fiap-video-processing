@@ -116,6 +116,27 @@ services:
       storage:
         condition: service_started
 
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - "8025:8025"
+
+  notification:
+    build:
+      context: .
+      dockerfile: src/Notification/Dockerfile
+    environment:
+      RabbitMq__Host: rabbitmq
+      RabbitMq__User: ${RABBITMQ_USER}
+      RabbitMq__Password: ${RABBITMQ_PASSWORD}
+      Smtp__Host: mailpit
+      Smtp__Port: "1025"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+
 volumes:
   auth-db-data:
   videos-db-data:
