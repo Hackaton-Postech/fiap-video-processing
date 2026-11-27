@@ -2,7 +2,7 @@ using RabbitMQ.Client;
 
 namespace FiapVideo.Videos.Infrastructure;
 
-// Esta topologia é declarada igual no Worker (filas de processamento). Mudanças precisam ser feitas nos dois lugares.
+// Esta topologia é declarada igual nos outros serviços (Worker e Notification). Mudanças precisam ser feitas em todos.
 public static class RabbitTopology
 {
     public const string FilaProcessar = "video.processar";
@@ -10,6 +10,8 @@ public static class RabbitTopology
     public const string FilaProcessarDlq = "video.processar.dlq";
     public const string FilaStatus = "video.status";
     public const string FilaStatusDlq = "video.status.dlq";
+    public const string FilaNotificacao = "video.notificacao";
+    public const string FilaNotificacaoDlq = "video.notificacao.dlq";
 
     public static async Task DeclararFilasAsync(IChannel canal, string exchange, CancellationToken ct)
     {
@@ -24,6 +26,11 @@ public static class RabbitTopology
         await canal.QueueBindAsync(FilaStatus, exchange, RoutingKeys.VideoProcessando, cancellationToken: ct);
         await canal.QueueBindAsync(FilaStatus, exchange, RoutingKeys.VideoProcessado, cancellationToken: ct);
         await canal.QueueBindAsync(FilaStatus, exchange, RoutingKeys.VideoFalhou, cancellationToken: ct);
+
+        // Fila do Notification Service (video.falhou). Declarada aqui também para não perder avisos
+        // de falha enquanto o Notification estiver fora do ar.
+        await DeclararComDlqAsync(canal, FilaNotificacao, FilaNotificacaoDlq, ct);
+        await canal.QueueBindAsync(FilaNotificacao, exchange, RoutingKeys.VideoFalhou, cancellationToken: ct);
     }
 
     private static async Task DeclararComDlqAsync(IChannel canal, string fila, string dlq, CancellationToken ct)
